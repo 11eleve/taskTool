@@ -2,13 +2,15 @@
 </script>
 
 <template>
-  <div class="circle"></div>
+  <div class="circle-outer"></div>
 </template>
 
 <style>
-.circle {
-  height: 20px;
-  width: 20px;
+.circle-outer {
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
+  background-color: #fff;
+  border: 10px solid #afb4db;
 }
 </style>

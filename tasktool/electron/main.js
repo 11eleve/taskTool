@@ -2,10 +2,10 @@ import { app, BrowserWindow } from "electron";
 import path from "node:path";                   
 import fs from "fs";                             
 
-let win;
+let window;
 // 配置electron的应用窗口
 const createWindow = () => {
-  win = new BrowserWindow({
+  window = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -16,7 +16,11 @@ const createWindow = () => {
   });
   
   // 连接本机前端页面的端口号
-  win.loadURL("http://localhost:5173")
+  window.loadURL("http://localhost:5173")
+ 
+  // 打开开发工具
+  window.webContents.openDevTools();
+ 
 };
  
 // 这段程序将会在 Electron 结束初始化和创建浏览器窗口的时候调用
@@ -29,3 +33,7 @@ app.whenReady().then(() => {
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
+
+window.on('resize', () => {
+  window.setSize(screen.getPrimaryDisplay().workAreaSize.width, screen.getPrimaryDisplay().workAreaSize.height)
+})
