@@ -1,8 +1,7 @@
-const { app, BrowserWindow } = require("electron");
-// 导入 Node.js 的 path 模块
-const path = require("node:path");
-const fs = require("fs");
- 
+import { app, BrowserWindow } from "electron";   
+import path from "node:path";                   
+import fs from "fs";                             
+
 let win;
 // 配置electron的应用窗口
 const createWindow = () => {
@@ -11,8 +10,8 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       nodeIntegration: true, // 如果你需要在渲染进程中使用Node.js
-      // 连接与渲染层的交互
-      preload: path.join(__dirname, "preload.js"),
+      // // 连接与渲染层的交互
+      // preload: path.join(__dirname, "preload.js"),
     },
   });
   
