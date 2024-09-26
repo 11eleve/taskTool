@@ -17,10 +17,6 @@ const createWindow = () => {
   
   // 连接本机前端页面的端口号
   win.loadURL("http://localhost:5173")
- 
-  // 打开开发工具
-  win.webContents.openDevTools();
- 
 };
  
 // 这段程序将会在 Electron 结束初始化和创建浏览器窗口的时候调用
