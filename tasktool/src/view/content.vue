@@ -1,6 +1,5 @@
 <script setup>
 import Circle from '../baseComponent/circle.vue'
-import nodeType from '../type/node.js'
 
 
 let nodeArr = [{title: 'hello', content : 'ok', isFinish: false}];
