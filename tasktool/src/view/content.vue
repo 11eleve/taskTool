@@ -1,10 +1,17 @@
 <script setup>
-  import Circle from '../baseComponent/circle.vue'
+import Circle from '../baseComponent/circle.vue'
+import nodeType from '../type/node.js'
+
+
+let nodeArr = [{title: 'hello', content : 'ok', isFinish: false}];
+
 </script>
 
 <template>
   <div class="content">
-    <Circle />
+    <div v-for="node in nodeArr">
+      <Circle />
+    </div>
   </div>
 </template>
 
