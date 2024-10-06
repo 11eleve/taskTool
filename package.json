@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "concurrently": "^9.0.1",
+    "data-fns": "^1.1.0",
+    "element-plus": "^2.8.4",
     "vue": "^3.4.37"
   },
   "devDependencies": {

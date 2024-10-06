@@ -1,6 +1,6 @@
 <script setup>
-import Circle from '../baseComponent/circle.vue'
-
+import Circle from '../components/circle.vue'
+import Progress from '../components/progress.vue'
 
 let nodeArr = [{title: 'hello', content : 'ok', isFinish: false}];
 
@@ -11,7 +11,9 @@ let nodeArr = [{title: 'hello', content : 'ok', isFinish: false}];
     <div v-for="node in nodeArr">
       <Circle />
     </div>
+    <Progress />
   </div>
+  
 </template>
 
 <style>
