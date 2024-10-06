@@ -8,12 +8,8 @@ let nodeArr = [{title: 'hello', content : 'ok', isFinish: false}];
 
 <template>
   <div class="content">
-    <div v-for="node in nodeArr">
-      <Circle />
-    </div>
     <Progress />
   </div>
-  
 </template>
 
 <style>
