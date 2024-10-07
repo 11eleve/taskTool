@@ -1,7 +1,18 @@
 <script setup>
 import Circle from '../components/circle.vue'
 import Progress from '../components/progress.vue'
+import { useTaskStore } from '../store/useTaskStore';
 
+const {activeTask, add} = useTaskStore()
+
+const create = () => {
+  //弹窗加添加
+  pop()
+}
+
+const pop = () => {
+  //弹窗
+}
 
 </script>
 
@@ -19,5 +30,6 @@ import Progress from '../components/progress.vue'
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 </style>
