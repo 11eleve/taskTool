@@ -4,7 +4,6 @@ import { taskType } from '../util/taskType'
 export const useTaskStore = defineStore('task', () => {
 
   let activeTask = ''
-
   let taskMap = new Map()
 
   function add() {
