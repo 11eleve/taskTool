@@ -2,13 +2,14 @@
 import Circle from '../components/circle.vue'
 import Progress from '../components/progress.vue'
 
-let nodeArr = [{title: 'hello', content : 'ok', isFinish: false}];
+let nodeArr = {title: 'hello', desctiption : '1089302', finished: false};
 
 </script>
 
 <template>
   <div class="content">
     <Progress />
+    <button @click="create">创建</button>
   </div>
 </template>
 
