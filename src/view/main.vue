@@ -1,13 +1,9 @@
 <script setup>
-import Header from './header.vue';
-import Content from './content.vue';
+import Tabs from './tabs.vue'
 </script>
 
 <template>
-  <div class="display">
-    <Header class="header"/>
-    <Content class="content"/>
-  </div>
+  <Tabs />
 </template>
 
 <style>
