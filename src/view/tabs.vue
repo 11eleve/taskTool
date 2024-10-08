@@ -1,9 +1,10 @@
 <template>
   <el-tabs v-model="editableTabsValue" type="card" editable class="demo-tabs" @edit="handleTabsEdit">
     <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
-      <!-- {{ item.content }} -->
-        <Header />
-        <Content />
+      {{ item.content }}
+      <!-- 后面要改成传递参数 -->
+      <!-- <Header />
+      <Content /> -->
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -11,29 +12,29 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { TabPaneName } from 'element-plus'
-import Content from './content.vue'
-import Header from './header.vue'
 import { useTaskStore } from '../store/useTaskStore'
 
-let tabIndex = 2
-const editableTabsValue = ref('2')
+interface tab {
+  title: string,
+  name: string,
+  content: object | string
+}
 
-const editableTabs = ref([
-  {
-    title: 'Tab 1',
-    name: '1',
-    content: {
-      taskNode: [
-        
-      ]
-    },
-  },
-  {
-    title: 'Tab 2',
-    name: '2',
-    content: 'Tab 2 content',
-  },
-])
+let tabIndex = 0
+const editableTabsValue = ref('0')
+let { taskMap } = useTaskStore()
+
+const editableTabs = ref<tab[]>([])
+
+//添加
+for (let [key, val] of taskMap.entries()) {
+  editableTabs.value.push({
+    title: key,
+    name: `${tabIndex++}`,
+    content: val
+  })
+}
+
 
 const handleTabsEdit = (
   targetName: TabPaneName | undefined,
@@ -42,12 +43,14 @@ const handleTabsEdit = (
   if (action === 'add') {
     const newTabName = `${++tabIndex}`
     editableTabs.value.push({
+      //添加页面逻辑
       title: 'New Tab',
       name: newTabName,
       content: 'New Tab content',
     })
     editableTabsValue.value = newTabName
   } else if (action === 'remove') {
+    //移除逻辑
     const tabs = editableTabs.value
     let activeName = editableTabsValue.value
     if (activeName === targetName) {

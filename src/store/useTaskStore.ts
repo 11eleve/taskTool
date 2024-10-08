@@ -59,6 +59,7 @@ export const useTaskStore = defineStore('task', () => {
 
   return {
     activeTask,
+    taskMap,
     add,
     remove,
     get,
