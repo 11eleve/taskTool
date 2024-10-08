@@ -10,7 +10,7 @@ const el = document.getElementById('documentLabel');
   </div>
 </template>
 
-<style>
+<style scoped>
 .app {
   display: flex;
   position: absolute;

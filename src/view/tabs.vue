@@ -3,8 +3,8 @@
     <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
       {{ item.content }}
       <!-- 后面要改成传递参数 -->
-      <!-- <Header />
-      <Content /> -->
+      <Header />
+      <Content />
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -70,7 +70,7 @@ const handleTabsEdit = (
 }
 </script>
 
-<style>
+<style scoped>
 .demo-tabs>.el-tabs__content {
   padding: 32px;
   color: #6b778c;

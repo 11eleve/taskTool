@@ -1,13 +1,16 @@
 <script setup>
 import Tabs from './tabs.vue'
+import Header from './header.vue'
+import Content from './content.vue'
 </script>
 
 <template>
-  <Tabs />
+
+  <Header />
+  <Content />
 </template>
 
-<style>
-
+<style scoped>
 .display {
   height: 100%;
   width: 100%;
