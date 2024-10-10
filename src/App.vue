@@ -16,8 +16,11 @@ const el = document.getElementById('documentLabel');
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 100vw; /* 使用视口的宽度 */
-  height: 100vh; /* 使用视口的高度 */
-  overflow: hidden; /* 防止溢出 */
+  width: 100vw;
+  /* 使用视口的宽度 */
+  height: 100vh;
+  /* 使用视口的高度 */
+  overflow: hidden;
+  /* 防止溢出 */
 }
 </style>
