@@ -11,12 +11,12 @@ const app = createApp(App)
 app.use(pinia)
 app.use(ElementPlus)
 app.mount('#app')
-// app.mount('#app').$nextTick(() => {
-//   // Use contextBridge
-//   window.ipcRenderer.on('main-process-message', (_event, message) => {
-//     console.log(message)
-//   })
-// })
+app.$nextTick(() => {
+  // Use contextBridge
+  window.ipcRenderer.on('main-process-message', (_event, message) => {
+    console.log(message)
+  })
+})
 
 
 
