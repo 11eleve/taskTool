@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, provide } from 'vue'
 import type { TabPaneName } from 'element-plus'
 import { useTaskStore } from '../store/useTaskStore'
 
@@ -33,6 +33,10 @@ for (let [key, val] of taskMap.entries()) {
     name: `${tabIndex++}`,
     content: val
   })
+}
+
+const changeTask = (title: string) => {
+  provide('curTask', title)
 }
 
 
