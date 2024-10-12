@@ -24,19 +24,19 @@ let active: number = 0
 const value = inject('curTask')
 
 //value为ref对象
-const curTask = (value as {value: string}).value
+// const curTask = (value as {value: string}).value
 
-if (!curTask) {
+// if (!curTask) {
 
- throw new Error('curTask is not provided')
+//  throw new Error('curTask is not provided')
 
-}
+// }
 
 // taskArr = getTest('test')[0]
 
 // 获取任务
 
-taskArr = getTest(curTask)[0]
+// taskArr = getTest(curTask)[0]
 
 
 taskArr = getTest('test')[0]
