@@ -1,5 +1,5 @@
 <template>
-  <div class="header">hello</div>
+  <div class="header">TaskTool</div>
 </template>
 
 <style scoped>

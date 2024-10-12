@@ -1,6 +1,6 @@
 <template>
   <el-tabs v-model="editableTabsValue" type="card" editable class="demo-tabs" @edit="handleTabsEdit">
-    <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
+    <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name" @click="changeTask(item.title)">
       {{ item.content }}
       <!-- 后面要改成传递参数 -->
       <Header />
@@ -36,7 +36,10 @@ for (let [key, val] of taskMap.entries()) {
 }
 
 const changeTask = (title: string) => {
-  provide('curTask', title)
+  //click没有触发
+  // provide('curTask', title)
+  // console.log('hello')
+  // console.log(title)
 }
 
 

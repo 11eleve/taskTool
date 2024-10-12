@@ -5,9 +5,10 @@ import Content from './content.vue'
 </script>
 
 <template>
-
-  <Header />
-  <Content />
+  <div class="display">
+    <Header />
+    <Content />
+  </div>
 </template>
 
 <style scoped>
@@ -17,9 +18,11 @@ import Content from './content.vue'
   display: flex;
   flex-direction: column;
 }
+
 .header {
   flex: 1;
 }
+
 .content {
   flex: 12;
 }
