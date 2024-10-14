@@ -6,7 +6,7 @@ import { useTaskStore } from '../store/useTaskStore';
 import { ElMessage, ElMessageBox } from 'element-plus'
 
 
-const {addTest} = useTaskStore()
+const {addTest, taskMap} = useTaskStore()
 
 const {active} = defineProps(['active']);
   
@@ -20,6 +20,7 @@ const open = () => {
 	})
 		.then(({ value }) => {
       addTest(active, value)
+      console.log(taskMap)
 			ElMessage({
 				type: 'success',
 				message: `Your task is:${value}`,

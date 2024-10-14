@@ -1,5 +1,5 @@
 export default nodeType = {
   title: String,
-  content: String,
+  description: String,
   isFinish: Boolean,
 }

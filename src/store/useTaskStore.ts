@@ -1,22 +1,24 @@
 import { defineStore } from 'pinia'
 import { taskType } from '../util/taskType'
+import { descriptionItemProps } from 'element-plus'
+import { ref } from 'vue'
 
 export const useTaskStore = defineStore('task', () => {
 
   let activeTask = ''
-  let taskMap = new Map()
+  let taskMap = ref(new Map())
 
   //测试数据
-  taskMap.set('test', [])
-  taskMap.get('test').push([
+  taskMap.value.set('test', [])
+  taskMap.value.get('test').push([
     {title: "创建项目", description: "step1", finished: false},
     {title: "加载项目", description: "step2", finished: false}, 
     {title: "运行项目", description: "step3", finished: false},
     {title: "结束项目", description: "step4", finished: false}
   ])
 
-  taskMap.set('test1', [])
-  taskMap.get('test1').push([
+  taskMap.value.set('test1', [])
+  taskMap.value.get('test1').push([
     {title: "创建", description: "step11", finished: false},
     {title: "加载", description: "step12", finished: false}, 
     {title: "运行", description: "step13", finished: false},
@@ -24,38 +26,42 @@ export const useTaskStore = defineStore('task', () => {
   ])
 
   function add() {
-    if (taskMap.has(activeTask)) {
+    if (taskMap.value.has(activeTask)) {
       return
     }
-    taskMap.set(activeTask, [])
+    taskMap.value.set(activeTask, [])
   }
 
-  function addTest(name: string, node: string) {
-    if (taskMap.has(name)) {
-      return
+  function addTest(name: string, title: string) {
+    if (!taskMap.value.has(name)) {
+      taskMap.value.set(name, [])
     }
-    taskMap.set(name, [node])
+    taskMap.value.get(name)[0].push({
+      title: title,
+      description: `step${taskMap.value.get(name)[0].length + 1}`,
+      isFinish: false
+    })
   }
 
   function remove(name: string) {
-    if (!taskMap.has(name)) {
+    if (!taskMap.value.has(name)) {
       return
     }
-    taskMap.delete(name)
+    taskMap.value.delete(name)
   }
 
   function get() {
-    if (!taskMap.has(activeTask)) {
+    if (!taskMap.value.has(activeTask)) {
       return
     }
-    return taskMap.get(activeTask)
+    return taskMap.value.get(activeTask)
   }
 
   function getTest(name: string) {
-    if (!taskMap.has(name)) {
+    if (!taskMap.value.has(name)) {
       return
     }
-    return taskMap.get(name)
+    return taskMap.value.get(name)
   }
   //弃用
   // function set(name: string, task: taskType) {
