@@ -15,6 +15,14 @@ export const useTaskStore = defineStore('task', () => {
     {title: "结束项目", description: "step4", finished: false}
   ])
 
+  taskMap.set('test1', [])
+  taskMap.get('test1').push([
+    {title: "创建项目", description: "step11", finished: false},
+    {title: "加载项目", description: "step12", finished: false}, 
+    {title: "运行项目", description: "step13", finished: false},
+    {title: "结束项目", description: "step14", finished: false}
+  ])
+
   function add() {
     if (taskMap.has(activeTask)) {
       return

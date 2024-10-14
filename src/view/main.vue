@@ -2,12 +2,13 @@
 import Tabs from './tabs.vue'
 import Header from './header.vue'
 import Content from './content.vue'
+
+console.log('main start')
 </script>
 
 <template>
   <div class="display">
-    <Header />
-    <Content />
+    <Tabs />
   </div>
 </template>
 

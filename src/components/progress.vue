@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue';
 import { useTaskStore } from '../store/useTaskStore';
 import type { taskType } from '../util/taskType';
 
@@ -20,28 +19,18 @@ const { getTest } = useTaskStore()
 
 let taskArr: taskType[] = []
 let active: number = 0
+const activeTask = defineProps(['active'])
 
-const value = inject('curTask')
-
-//value为ref对象
-// const curTask = (value as {value: string}).value
-
-// if (!curTask) {
-
-//  throw new Error('curTask is not provided')
-
-// }
 
 // taskArr = getTest('test')[0]
 
 // 获取任务
+console.log("hello progress" + activeTask.active)
+taskArr = getTest(activeTask.active as string)[0]
 
-// taskArr = getTest(curTask)[0]
 
+// taskArr = getTest('test')[0]
 
-taskArr = getTest('test')[0]
-console.log(getTest('test'))
-console.log(taskArr)
 
 const finish = (item: taskType) => {
   item.finished = true

@@ -1,18 +1,17 @@
 <template>
   <el-tabs v-model="editableTabsValue" type="card" editable class="demo-tabs" @edit="handleTabsEdit">
-    <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name" @click="changeTask(item.title)">
-      {{ item.content }}
-      <!-- 后面要改成传递参数 -->
-      <Header />
-      <Content />
+    <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
+      <!-- {{ item.content }} -->
+      <Content :active="item.title"/>
     </el-tab-pane>
   </el-tabs>
 </template>
 
 <script setup lang="ts">
-import { ref, provide } from 'vue'
+import { ref } from 'vue'
 import type { TabPaneName } from 'element-plus'
 import { useTaskStore } from '../store/useTaskStore'
+import Content from './content.vue'
 
 interface tab {
   title: string,
@@ -26,6 +25,8 @@ let { taskMap } = useTaskStore()
 
 const editableTabs = ref<tab[]>([])
 
+console.log('tabs start')
+
 //添加
 for (let [key, val] of taskMap.entries()) {
   editableTabs.value.push({
@@ -34,14 +35,6 @@ for (let [key, val] of taskMap.entries()) {
     content: val
   })
 }
-
-const changeTask = (title: string) => {
-  //click没有触发
-  // provide('curTask', title)
-  // console.log('hello')
-  // console.log(title)
-}
-
 
 const handleTabsEdit = (
   targetName: TabPaneName | undefined,
