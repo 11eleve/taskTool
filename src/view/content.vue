@@ -9,6 +9,8 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 const {addTest, taskMap} = useTaskStore()
 
 const {active} = defineProps(['active']);
+
+console.log(active)
   
 const open = () => {
 	ElMessageBox.prompt('输入节点名称', '添加任务', {

@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import type { TabPaneName } from 'element-plus'
 import { useTaskStore } from '../store/useTaskStore'
 import Content from './content.vue'
@@ -59,7 +59,6 @@ const handleTabsEdit = (
         }
       })
     }
-
     editableTabsValue.value = activeName
     editableTabs.value = tabs.filter((tab) => tab.name !== targetName)
   }
