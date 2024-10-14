@@ -14,9 +14,8 @@ const open = () => {
 	ElMessageBox.prompt('输入节点名称', '添加任务', {
 		confirmButtonText: 'OK',
 		cancelButtonText: 'Cancel',
-		// inputPattern:
-		// 	/[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
-		// inputErrorMessage: 'Invalid',
+		inputPattern: /\S+/,
+		inputErrorMessage: '不能为空',
 	})
 		.then(({ value }) => {
       addTest(active, value)
