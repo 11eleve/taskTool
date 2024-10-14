@@ -2,16 +2,18 @@
   <el-tabs v-model="editableTabsValue" type="card" editable class="demo-tabs" @edit="handleTabsEdit">
     <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
       <!-- {{ item.content }} -->
-      <Content :active="item.title"/>
+      <Content :active="item.title" />
     </el-tab-pane>
   </el-tabs>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import type { TabPaneName } from 'element-plus'
 import { useTaskStore } from '../store/useTaskStore'
 import Content from './content.vue'
+
+let { taskMap, newTab } = useTaskStore()
 
 interface tab {
   title: string,
@@ -21,8 +23,6 @@ interface tab {
 
 let tabIndex = 0
 const editableTabsValue = ref('0')
-let { taskMap } = useTaskStore()
-
 const editableTabs = ref<tab[]>([])
 
 //添加
@@ -39,14 +39,12 @@ const handleTabsEdit = (
   action: 'remove' | 'add'
 ) => {
   if (action === 'add') {
-    const newTabName = `${++tabIndex}`
+    newTab(`test${++tabIndex}`)
     editableTabs.value.push({
-      //添加页面逻辑
-      title: 'New Tab',
-      name: newTabName,
-      content: 'New Tab content',
+      title: `test${tabIndex}`,
+      name: `test${tabIndex}`,
+      content: []
     })
-    editableTabsValue.value = newTabName
   } else if (action === 'remove') {
     //移除逻辑
     const tabs = editableTabs.value

@@ -17,8 +17,8 @@ export const useTaskStore = defineStore('task', () => {
     {title: "结束项目", description: "step4", finished: false}
   ])
 
-  taskMap.value.set('test1', [])
-  taskMap.value.get('test1').push([
+  taskMap.value.set('test6', [])
+  taskMap.value.get('test6').push([
     {title: "创建", description: "step11", finished: false},
     {title: "加载", description: "step12", finished: false}, 
     {title: "运行", description: "step13", finished: false},
@@ -63,6 +63,10 @@ export const useTaskStore = defineStore('task', () => {
     }
     return taskMap.value.get(name)
   }
+
+  function newTab(name: string) {
+    taskMap.value.set(name, [])
+  }
   //弃用
   // function set(name: string, task: taskType) {
   //   if (!taskMap.has(name)) {
@@ -79,6 +83,7 @@ export const useTaskStore = defineStore('task', () => {
     get,
     // set,
     getTest,
-    addTest
+    addTest,
+    newTab
   }
 })
