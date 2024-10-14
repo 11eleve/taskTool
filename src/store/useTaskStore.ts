@@ -17,10 +17,10 @@ export const useTaskStore = defineStore('task', () => {
 
   taskMap.set('test1', [])
   taskMap.get('test1').push([
-    {title: "创建项目", description: "step11", finished: false},
-    {title: "加载项目", description: "step12", finished: false}, 
-    {title: "运行项目", description: "step13", finished: false},
-    {title: "结束项目", description: "step14", finished: false}
+    {title: "创建", description: "step11", finished: false},
+    {title: "加载", description: "step12", finished: false}, 
+    {title: "运行", description: "step13", finished: false},
+    {title: "结束", description: "step14", finished: false}
   ])
 
   function add() {
@@ -30,11 +30,11 @@ export const useTaskStore = defineStore('task', () => {
     taskMap.set(activeTask, [])
   }
 
-  function addTest(name: string) {
+  function addTest(name: string, node: string) {
     if (taskMap.has(name)) {
       return
     }
-    taskMap.set(name, [])
+    taskMap.set(name, [node])
   }
 
   function remove(name: string) {
@@ -57,13 +57,13 @@ export const useTaskStore = defineStore('task', () => {
     }
     return taskMap.get(name)
   }
-
-  function set(name: string, task: taskType) {
-    if (!taskMap.has(name)) {
-      return
-    }
-    taskMap.get(name).push(task)
-  }
+  //弃用
+  // function set(name: string, task: taskType) {
+  //   if (!taskMap.has(name)) {
+  //     return
+  //   }
+  //   taskMap.get(name).push(task)
+  // }
 
   return {
     activeTask,
@@ -71,7 +71,7 @@ export const useTaskStore = defineStore('task', () => {
     add,
     remove,
     get,
-    set,
+    // set,
     getTest,
     addTest
   }
