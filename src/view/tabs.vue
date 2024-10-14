@@ -25,8 +25,6 @@ let { taskMap } = useTaskStore()
 
 const editableTabs = ref<tab[]>([])
 
-console.log('tabs start')
-
 //添加
 for (let [key, val] of taskMap.entries()) {
   editableTabs.value.push({

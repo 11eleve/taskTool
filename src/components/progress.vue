@@ -21,16 +21,8 @@ let taskArr: taskType[] = []
 let active: number = 0
 const activeTask = defineProps(['active'])
 
-
-// taskArr = getTest('test')[0]
-
 // 获取任务
-console.log("hello progress" + activeTask.active)
 taskArr = getTest(activeTask.active as string)[0]
-
-
-// taskArr = getTest('test')[0]
-
 
 const finish = (item: taskType) => {
   item.finished = true
@@ -38,7 +30,6 @@ const finish = (item: taskType) => {
 </script>
 
 <style>
-/* 自定义样式不能加scoped */
 .order-detail-step .el-step__description.is-finish {
   white-space: pre-line;
 }

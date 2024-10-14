@@ -3,30 +3,42 @@ import { progressProps } from 'element-plus';
 import Circle from '../components/circle.vue'
 import Progress from '../components/progress.vue'
 import { useTaskStore } from '../store/useTaskStore';
-
-console.log('content start')
-
-const {activeTask, add} = useTaskStore()
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 
-// const create = () => {
-//   //弹窗加添加
-//   pop()
-// }
-
-// const pop = () => {
-//   //弹窗
-// }
+const {addTest} = useTaskStore()
 
 const {active} = defineProps(['active']);
-console.log(active)
+  
+const open = () => {
+	ElMessageBox.prompt('输入节点名称', '添加任务', {
+		confirmButtonText: 'OK',
+		cancelButtonText: 'Cancel',
+		// inputPattern:
+		// 	/[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+		// inputErrorMessage: 'Invalid',
+	})
+		.then(({ value }) => {
+      addTest(active, value)
+			ElMessage({
+				type: 'success',
+				message: `Your task is:${value}`,
+			})
+		})
+		.catch(() => {
+			ElMessage({
+				type: 'info',
+				message: 'Input canceled',
+			})
+		})
+}
 
 </script>
 
 <template>
   <div class="content">
     <Progress :active="active"/>
-    <button @click="create">添加任务</button>
+    <button @click="open">添加任务</button>
   </div>
 </template>
 
